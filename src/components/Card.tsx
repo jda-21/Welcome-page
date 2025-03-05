@@ -1,23 +1,48 @@
-import { FC } from 'react';
+import { useState } from 'react';
+import truckBgImage from '../assets/Truck-bg.jpeg';
+import jcgmailImage from '../assets/jcgmail.png';
+import LoadingPage from './LoadingPage';
+import Dashboard from './Dashboard';
 import '../styles/Card.css';
 
-interface CardProps {
-  onSendMessage: () => void;
-}
+const Card = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
 
-const Card: FC<CardProps> = ({ onSendMessage }) => {
+  const handleClick = () => {
+    setIsLoading(true);
+  };
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    setShowDashboard(true);
+  };
+
+  if (showDashboard) {
+    return <Dashboard />;
+  }
+
+  if (isLoading) {
+    return <LoadingPage onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
     <div className="container">
       <div className="card">
-        <h1>Work fast. Live slow.</h1>
-        <h2>Transform your digital presence.</h2>
-        <p>From zero to extraordinary. Let's create your digital reality.</p>
-        <button className="cta-button" onClick={onSendMessage}>
-          Send a message
-        </button>
-        <div className="footer">
-          <div className="brand">sukoya.design</div>
-          <div className="services">web + product + brand</div>
+        <h1>Welcome Stranger</h1>
+        <div className="content-section">
+          <div className="truck-image-container" onClick={handleClick} role="button" tabIndex={0}>
+            <img src={truckBgImage} alt="Truck" className="truck-image" />
+          </div>
+          <div className="button-container">
+            <button className="cta-button" onClick={handleClick}>
+              Ready to explore
+            </button>
+          </div>
+        </div>
+        <div className="credit-section">
+          <img src={jcgmailImage} alt="JCG Mail" className="credit-image" />
+          <p className="credit-text">Dev by JDA</p>
         </div>
       </div>
     </div>

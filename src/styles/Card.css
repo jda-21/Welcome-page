@@ -7,6 +7,8 @@
 
 body {
   background-color: white;
+  background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+  background-size: 20px 20px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -17,18 +19,25 @@ body {
   width: 100%;
   max-width: 500px;
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
-  background-color: #f8f9fa;
+  background-color: white;
   border-radius: 24px;
   padding: 40px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  border: 1px solid #000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+              0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2),
+              0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 h1 {
@@ -36,6 +45,7 @@ h1 {
   margin-bottom: 20px;
   color: #1a1a1a;
   font-weight: 700;
+  text-align: center;
 }
 
 h2 {
@@ -52,20 +62,69 @@ p {
   line-height: 1.5;
 }
 
+.content-section {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.truck-image-container {
+  width: 100%;
+  margin: 20px 0 0 0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.truck-image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.truck-image-container:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #FFC300;
+}
+
+.truck-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+}
+
+.truck-image-container:hover .truck-image {
+  transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -30px;
+  position: relative;
+  z-index: 2;
+}
+
 .cta-button {
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #FFC300;
+  color: black;
   border: none;
   padding: 15px 30px;
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
 }
 
 .cta-button:hover {
-  background-color: #333;
+  background-color: #FFD60A;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .footer {
@@ -83,6 +142,33 @@ p {
 
 .services {
   color: #999;
+}
+
+.credit-section {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-right: 0;
+}
+
+.credit-image {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+}
+
+.credit-text {
+  position: absolute;
+  right: 0;
+  font-size: 0.7rem;
+  color: #666;
+  font-weight: 500;
 }
 
 @media (max-width: 480px) {
