@@ -2,12 +2,10 @@ import { useState } from 'react';
 import truckBgImage from '../assets/Truck-bg.jpeg';
 import jcgmailImage from '../assets/jcgmail.png';
 import LoadingPage from './LoadingPage';
-import Dashboard from './Dashboard';
 import '../styles/Card.css';
 
 const Card = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false);
 
   const handleClick = () => {
     setIsLoading(true);
@@ -15,12 +13,7 @@ const Card = () => {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
-    setShowDashboard(true);
   };
-
-  if (showDashboard) {
-    return <Dashboard />;
-  }
 
   if (isLoading) {
     return <LoadingPage onLoadingComplete={handleLoadingComplete} />;

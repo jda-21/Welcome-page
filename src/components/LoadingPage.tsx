@@ -32,6 +32,7 @@ const LoadingPage: FC<LoadingPageProps> = ({ onLoadingComplete }) => {
         </div>
         <div className="loading-indicator">
           <LoadingAnimation />
+          <p className="loading-message">We're putting the finishing touches on everything</p>
         </div>
       </div>
       <div className="loading-footer">
